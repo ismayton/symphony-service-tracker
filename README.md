@@ -6,7 +6,7 @@ The service tracker allows the user to create and edit a database of musicians, 
 
 Be sure to `bundle install` when starting the program. 
 
-To use the provided Houston Symphony seed information, `rake db:seed` to import that data.
+To use the provided Houston Symphony seed information, `rake db:seed` to import the provided data.
 Otherwise, use the provided forms to create musicians, sections, and programs. 
 
 ## Usage
