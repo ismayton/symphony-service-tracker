@@ -1,10 +1,13 @@
-<% @sections.each do |section| %>
-    <a href="/sections/<%= section.id %>"><h2><%= section.name %></h2></a>
+<h1>Section List</h1>
 
-    <ul>
+<% @sections.each do |section| %>
+    <div class="section-index">
+        <a href="/sections/<%= section.id %>"><h2><%= section.name %></h2></a>
         <% section.musicians.each do |musician| %>
-            <li><a href="musicians/<%= musician.id %>"><h4><%= musician.name %></h4></a></li>
-            <p>Services: <%= musician.services %></p>
+        <div class="musician">
+            <a href="musicians/<%= musician.id %>"><%= musician.name %></a><br>
+            Services: <%= musician.services %>
+            </div>
         <% end %>
-    </ul>
+    </div>
 <% end %>

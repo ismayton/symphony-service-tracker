@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_155930) do
   create_table "programs", force: :cascade do |t|
     t.string "name"
     t.integer "services"
+    t.string "dates"
   end
 
   create_table "sections", force: :cascade do |t|

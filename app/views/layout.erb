@@ -1,5 +1,56 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../style.css">
+        <style>
+            .column {
+                float: left;
+            }
+            
+            .left {
+                width: 30%;
+                min-width: 100px;
+            }
+            
+            .right {
+                width: 70%;
+            }
+
+            .submit {
+                clear: left;
+                padding: 1em;
+            }
+
+            .musician-index {
+                float: left;
+                width: 33%;
+                clear: right;
+            }
+
+            body h3 {
+                margin-block-end: .25em;
+            }
+
+            body h4 {
+                margin-block-end: .25em;
+            }
+
+            .section-index {
+                float: left;
+                width: 50%;
+                margin: auto;
+                padding-bottom: 2em;
+                min-width: 150px;
+            }
+
+            .musician {
+                float: left;
+                width: 40%;
+                min-width: 140px;
+                padding: 10px;
+            }
+        </style>
+    </head>
     <body>
         <%= yield %>
     </body>

@@ -1,5 +1,8 @@
+<h1>Musician List</h1>
 <% @musicians.each do |musician| %>
-    <a href="musicians/<%= musician.id %>"><h3><%= musician.name %></h3></a>
-    <p>Section: <%= musician.section.name %></p>
-    <p>Services: <%= musician.services %></p>
+    <div class="musician-index">
+        <a href="musicians/<%= musician.id %>"><h3><%= musician.name %></h3></a>
+        Section: <%= musician.section.name %><br>
+        Services: <%= musician.services %>
+    </div>
 <% end %>

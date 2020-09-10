@@ -1,0 +1,25 @@
+<h2>Create a New Musician</h2>
+
+<form method="POST" action="/musicians/new">
+    <p>Name: <input type="text" name="musician[name]"></p>
+    
+    <div class="row">
+        <div class="column left">
+            <h3>Section:</h3>
+            <% @sections.each do |section| %>
+                <input type="radio" id="<%= section.id %>" name="musician[section]" value="<%= section.name %>">
+                <label for="<%= section.id %>"><%= section.name %></label><br>
+            <% end %>
+        </div>
+
+        <div class="column right">
+            <h3>Programs Played:</h3>
+            <% @programs.each do |program| %>
+                <input type="checkbox" id="<%= program.id %>" name="musician[programs][]" value="<%= program.name %>">
+                <label for="<%= program.id %>"><%= program.name %></label><br>
+            <% end %>
+        </div>
+    </div>
+    <br>
+    <p class="submit"><input type="submit" value="create"></p>
+</form>
