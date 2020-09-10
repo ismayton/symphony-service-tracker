@@ -1,0 +1,8 @@
+<h1><%= @section.name %></h1>
+<h3>Musicians:</h3>
+
+<ul>
+    <% @section.musicians.each do |musician|%>
+        <a href="../musicians/<%= musician.id %>"><li><%= musician.name %></li></a>
+    <% end %>
+</ul>

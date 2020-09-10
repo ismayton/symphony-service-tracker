@@ -1,0 +1,10 @@
+<% @sections.each do |section| %>
+    <a href="/sections/<%= section.id %>"><h2><%= section.name %></h2></a>
+
+    <ul>
+        <% section.musicians.each do |musician| %>
+            <li><a href="musicians/<%= musician.id %>"><h4><%= musician.name %></h4></a></li>
+            <p>Services: <%= musician.services %></p>
+        <% end %>
+    </ul>
+<% end %>

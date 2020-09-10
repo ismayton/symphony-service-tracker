@@ -10,7 +10,9 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do 
-    "Hello World"
+    @musicians = Musician.all
+    @sections = Section.all
+    erb :index
   end 
-  
+
 end

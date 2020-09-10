@@ -1,0 +1,11 @@
+<h1><%= @musician.name %></h1>
+<h4>Section: <a href="../sections/<%= @musician.section.id %>"><%= @musician.section.name %></h4></a>
+<h4>Services: <%= @musician.services %></h4>
+
+<br>
+
+<% @musician.programs.each do |program|%>
+    <h4><%= program.name %></h4>
+    <li>Services: <%= program.services %></li>
+<% end %>
+

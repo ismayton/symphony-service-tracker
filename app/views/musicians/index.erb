@@ -1,0 +1,5 @@
+<% @musicians.each do |musician| %>
+    <a href="musicians/<%= musician.id %>"><h3><%= musician.name %></h3></a>
+    <p>Section: <%= musician.section.name %></p>
+    <p>Services: <%= musician.services %></p>
+<% end %>
