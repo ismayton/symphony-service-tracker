@@ -11,4 +11,12 @@ class Musician < ActiveRecord::Base
         services
     end 
 
+    def last_name
+        array = self.name.split(" ")
+        array.last
+    end 
+
+    def self.all_sorted_by_last
+        self.all.sort_by{|w| w.last_name}
+    end
 end 
