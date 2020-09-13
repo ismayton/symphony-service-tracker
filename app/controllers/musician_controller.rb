@@ -30,5 +30,20 @@ class MusicianController < ApplicationController
   get '/musicians/:id' do
     @musician = Musician.find(params[:id])
     erb :'/musicians/show' 
+  end
+   
+  get '/musicians/:id/edit' do
+    @musician = Musician.find(params[:id])
+    @sections = Section.all 
+    @programs = Program.all
+    erb :'/musicians/edit' 
+  end
+
+  patch '/musicians/:id/edit' do 
+    @musician = Musician.find(params[:id])
+    
+    binding.pry
   end 
+
+
 end 
