@@ -29,7 +29,35 @@ class SectionController < ApplicationController
     erb :'/sections/show'
   end 
 
-  
+  get '/sections/:id/edit' do
+    @section = Section.find(params[:id])
+    @musicians = Musician.all 
+    erb :'/sections/edit' 
+  end
+
+  patch '/sections/:id/edit' do 
+    if !params[:section][:name].empty?
+      @section = Section.find(params[:id])
+      @section.update(name: params[:section][:name])
+
+      if params[:section][:musicians]
+        @section.musicians.clear
+        params[:section][:musicians].each do |musician_name|
+          @section.musicians << Musician.find_by(name: musician_name)
+        end
+      end
+
+      @section.save
+      redirect to "/sections/#{params[:id]}"
+    else
+      redirect to "/sections/#{params[:id]}/edit"
+    end
+  end 
+
+  get '/sections/:id/delete' do 
+    Section.find(params[:id]).delete
+    redirect to '/sections'
+  end 
 
 
 end 

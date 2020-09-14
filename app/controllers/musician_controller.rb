@@ -40,10 +40,28 @@ class MusicianController < ApplicationController
   end
 
   patch '/musicians/:id/edit' do 
-    @musician = Musician.find(params[:id])
-    
-    binding.pry
+    if !params[:musician][:name].empty?
+      @musician = Musician.find(params[:id])
+      @musician.update(name: params[:musician][:name])
+      @musician.section = Section.find_by(name: params[:musician][:section])
+
+      if params[:musician][:programs]
+        @musician.programs.clear
+        params[:musician][:programs].each do |program_name|
+          @musician.programs << Program.find_by(name: program_name)
+        end
+      end
+
+      @musician.save
+      redirect to "/musicians/#{params[:id]}"
+    else
+      redirect to "/musicians/#{params[:id]}/edit"
+    end
   end 
 
+  get '/musicians/:id/delete' do 
+    Musician.find(params[:id]).delete
+    redirect to '/musicians'
+  end 
 
 end 

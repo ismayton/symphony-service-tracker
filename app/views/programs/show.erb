@@ -1,0 +1,19 @@
+<h1><%= @program.name %></h1>
+<h4>Services: <%= @program.services %></h4>
+
+<br>
+
+<% @program.musicians.each do |musician|%>
+    <h4><a href="/musicians/<%= musician.id %>"><%= musician.name %></a> - <%= musician.section.name %></h4>
+    
+<% end %>
+<br>
+
+<form method="get" action="/programs/<%= @program.id %>/edit"> 
+    <input type="submit" value="edit">
+</form>
+
+<br>
+<form method="get" action="/programs/<%= @program.id %>/delete"> 
+    <input type="submit" value="delete">
+</form>

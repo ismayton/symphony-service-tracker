@@ -5,7 +5,16 @@
 <br>
 
 <% @musician.programs.each do |program|%>
-    <h4><%= program.name %></h4>
+    <a href="../programs/<%= program.id %>"><h4><%= program.name %></h4></a>
     <li>Services: <%= program.services %></li>
 <% end %>
+<br>
 
+<form method="get" action="/musicians/<%= @musician.id %>/edit"> 
+    <input type="submit" value="edit">
+</form>
+
+<br>
+<form method="get" action="/musicians/<%= @musician.id %>/delete"> 
+    <input type="submit" value="delete">
+</form>

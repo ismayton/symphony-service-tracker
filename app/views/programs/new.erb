@@ -1,0 +1,15 @@
+<h2>Create a New Program</h2>
+
+<form method="POST" action="/programs/new">
+    <p>Name: <input type="text" name="program[name]"></p>
+    <p>Services: <input type="number" name="program[services]" min="1" max="12"></p>
+        
+    <h3>Musicians:</h3>
+    <% @musicians.each do |musician| %>
+        <input type="checkbox" id="<%= musician.id %>" name="program[musicians][]" value="<%= musician.name %>">
+        <label for="<%= musician.id %>"><%= musician.name %></label><br>
+    <% end %>
+
+    <br>
+    <p class="submit"><input type="submit" value="create"></p>
+</form>

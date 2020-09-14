@@ -1,0 +1,18 @@
+<h2>Edit Program</h2>
+
+<form method="POST" action="/programs/<%= @program.id %>/edit">
+    <p>Name: <input type="text" name="program[name]" value="<%= @program.name %>"></p>
+    <input id="hidden" type="hidden" name="_method" value="patch">
+
+    <p>Services: <input type="number" name="program[services]" min="1" max="12" value="<%= @program.services %>"></p>
+        
+    <h3>Musicians:</h3>
+    <% @musicians.each do |musician| %>
+        <input type="checkbox" id="<%= musician.id %>" name="program[musicians][]" value="<%= musician.name %>" <%='checked' if @program.musicians.include?(musician) %>>
+        <label for="<%= musician.id %>"><%= musician.name %></label><br>
+    <% end %>
+
+    <p class="submit"><input type="submit" value="edit"></p>
+</form>
+
+

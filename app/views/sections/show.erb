@@ -6,3 +6,12 @@
         <a href="../musicians/<%= musician.id %>"><li><%= musician.name %></li></a>
     <% end %>
 </ul>
+
+<form method="get" action="/sections/<%= @section.id %>/edit"> 
+    <input type="submit" value="edit">
+</form>
+
+<br>
+<form method="get" action="/sections/<%= @section.id %>/delete"> 
+    <input type="submit" value="delete">
+</form>

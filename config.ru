@@ -6,4 +6,5 @@ use Rack::MethodOverride
 
 use MusicianController
 use SectionController 
+use ProgramController
 run ApplicationController
