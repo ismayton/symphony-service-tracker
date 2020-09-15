@@ -1,4 +1,13 @@
 <h1>Musician List</h1>
+
+<% if admin? %>
+
+<form method="get" action="/musicians/new"> 
+    <input type="submit" value="New Musician">
+</form>
+
+<% end %>
+
 <% @musicians.each do |musician| %>
     <div class="musician-index">
         <a href="musicians/<%= musician.id %>"><h3><%= musician.name %></h3></a>
@@ -6,3 +15,4 @@
         Services: <%= musician.services %>
     </div>
 <% end %>
+

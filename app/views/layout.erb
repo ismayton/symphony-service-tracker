@@ -48,9 +48,21 @@
             min-width: 140px;
             padding: 10px;
             }
+
+            .logout {
+                clear: left;
+                padding-top: 20px;
+            }
         </style>
     </head>
     <body>
         <%= yield %>
     </body>
+    <footer>
+        <% if logged_in? %>
+       <p><form method="GET" action="/logout" class="logout">
+        <input type="submit" value="logout">
+        </form></p>
+        <% end %>
+    </footer>
 </html>

@@ -1,5 +1,13 @@
 <h1>Section List</h1>
 
+<% if admin? %>
+
+<form method="get" action="/sections/new"> 
+    <input type="submit" value="New Section">
+</form>
+
+<% end %>
+
 <% @sections.each do |section| %>
     <div class="section-index">
         <a href="/sections/<%= section.id %>"><h2><%= section.name %></h2></a>
@@ -11,3 +19,5 @@
         <% end %>
     </div>
 <% end %>
+
+

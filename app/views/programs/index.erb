@@ -1,4 +1,13 @@
 <h1>Program List</h1>
+
+<% if admin? %>
+
+<form method="get" action="/programs/new"> 
+    <input type="submit" value="New Program">
+</form>
+
+<% end %>
+
 <% @programs.each do |program| %>
     <div class="musician-index">
         <a href="/programs/<%= program.id %>"><h3><%= program.name %></h3></a>
@@ -6,3 +15,4 @@
         Musicians: <%= program.musicians.count %>
     </div>
 <% end %>
+

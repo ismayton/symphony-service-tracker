@@ -75,7 +75,6 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     def admin?
-      binding.pry
       session[:admin_id]
     end
 
