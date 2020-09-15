@@ -20,12 +20,16 @@ class MusicianController < ApplicationController
   end
 
   post '/musicians/new' do
-    if params[:musician] && params[:section]
+    binding.pry
+    if params[:musician][:name] && params[:musician][:section]
       @musician = Musician.create(name: params[:musician][:name])
       @musician.section = Section.find_by(name: params[:musician][:section])
-      params[:musician][:programs].each do |program_name|
-        @musician.programs << Program.find_by(name: program_name)
-      end
+      
+      if params[:musician][:programs]
+        params[:musician][:programs].each do |program_name|
+          @musician.programs << Program.find_by(name: program_name)
+        end
+      end 
 
       @musician.save
 
@@ -79,7 +83,7 @@ class MusicianController < ApplicationController
     if !admin?
       redirect to '/'
     end
-    
+
     Musician.find(params[:id]).delete
     redirect to '/musicians'
   end 
