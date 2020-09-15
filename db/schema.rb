@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_155930) do
+ActiveRecord::Schema.define(version: 2020_09_15_164047) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+  end
 
   create_table "musician_programs", force: :cascade do |t|
     t.integer "musician_id"
@@ -30,6 +35,11 @@ ActiveRecord::Schema.define(version: 2020_09_09_155930) do
 
   create_table "sections", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
   end
 
 end

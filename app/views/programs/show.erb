@@ -9,6 +9,8 @@
 <% end %>
 <br>
 
+<% if admin? %>
+
 <form method="get" action="/programs/<%= @program.id %>/edit"> 
     <input type="submit" value="edit">
 </form>
@@ -17,3 +19,5 @@
 <form method="get" action="/programs/<%= @program.id %>/delete"> 
     <input type="submit" value="delete">
 </form>
+
+<% end %>

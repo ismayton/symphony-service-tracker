@@ -2,8 +2,7 @@
 <% @programs.each do |program| %>
     <div class="musician-index">
         <a href="/programs/<%= program.id %>"><h3><%= program.name %></h3></a>
-        Services: <%= program.services %>
+        Services: <%= program.services %><br>
         Musicians: <%= program.musicians.count %>
     </div>
-
 <% end %>

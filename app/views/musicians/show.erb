@@ -10,6 +10,8 @@
 <% end %>
 <br>
 
+<% if admin? %>
+
 <form method="get" action="/musicians/<%= @musician.id %>/edit"> 
     <input type="submit" value="edit">
 </form>
@@ -18,3 +20,5 @@
 <form method="get" action="/musicians/<%= @musician.id %>/delete"> 
     <input type="submit" value="delete">
 </form>
+
+<% end %>

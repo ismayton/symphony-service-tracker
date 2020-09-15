@@ -1,11 +1,19 @@
 class SectionController < ApplicationController 
 
   get '/sections' do 
-      @sections = Section.all
-      erb :'/sections/index'
+    if !logged_in?
+      redirect to '/'
+    end 
+
+    @sections = Section.all
+    erb :'/sections/index'
   end 
   
   get '/sections/new' do
+    if !admin?
+      redirect to '/'
+    end
+
     @musicians = Musician.all_sorted_by_last
     erb :'/sections/new'
   end
@@ -24,12 +32,20 @@ class SectionController < ApplicationController
     end
   end 
 
-  get '/sections/:id' do 
+  get '/sections/:id' do
+    if !logged_in?
+      redirect to '/'
+    end 
+     
     @section = Section.find(params[:id])
     erb :'/sections/show'
   end 
 
   get '/sections/:id/edit' do
+    if !admin?
+      redirect to '/'
+    end
+
     @section = Section.find(params[:id])
     @musicians = Musician.all 
     erb :'/sections/edit' 
@@ -55,6 +71,10 @@ class SectionController < ApplicationController
   end 
 
   get '/sections/:id/delete' do 
+    if !admin?
+      redirect to '/'
+    end
+    
     Section.find(params[:id]).delete
     redirect to '/sections'
   end 

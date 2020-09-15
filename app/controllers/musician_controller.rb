@@ -1,11 +1,19 @@
 class MusicianController < ApplicationController 
 
   get '/musicians' do 
+    if !logged_in?
+      redirect to '/'
+    end 
+
       @musicians = Musician.all_sorted_by_last
       erb :'/musicians/index'
   end 
 
   get '/musicians/new' do
+    if !admin?
+      redirect to '/'
+    end
+
     @sections = Section.all 
     @programs = Program.all
     erb :'/musicians/new'
@@ -28,11 +36,19 @@ class MusicianController < ApplicationController
   end 
 
   get '/musicians/:id' do
+    if !logged_in?
+      redirect to '/'
+    end 
+    
     @musician = Musician.find(params[:id])
     erb :'/musicians/show' 
   end
    
   get '/musicians/:id/edit' do
+    if !admin?
+      redirect to '/'
+    end
+
     @musician = Musician.find(params[:id])
     @sections = Section.all 
     @programs = Program.all
@@ -60,6 +76,10 @@ class MusicianController < ApplicationController
   end 
 
   get '/musicians/:id/delete' do 
+    if !admin?
+      redirect to '/'
+    end
+    
     Musician.find(params[:id]).delete
     redirect to '/musicians'
   end 

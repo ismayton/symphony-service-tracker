@@ -1,11 +1,19 @@
 class ProgramController < ApplicationController 
 
     get '/programs' do 
+      if !logged_in?
+        redirect to '/'
+      end 
+
         @programs = Program.all
         erb :'/programs/index'
     end 
     
     get '/programs/new' do
+      if !admin?
+        redirect to '/'
+      end
+
       @musicians = Musician.all_sorted_by_last
       erb :'/programs/new'
     end
@@ -30,11 +38,19 @@ class ProgramController < ApplicationController
     end 
   
     get '/programs/:id' do 
+      if !logged_in?
+        redirect to '/'
+      end 
+
       @program = Program.find(params[:id])
       erb :'/programs/show'
     end 
   
     get '/programs/:id/edit' do
+      if !admin?
+        redirect to '/'
+      end
+
       @program = Program.find(params[:id])
       @musicians = Musician.all 
       erb :'/programs/edit' 
@@ -61,9 +77,12 @@ class ProgramController < ApplicationController
     end 
   
     get '/programs/:id/delete' do 
+      if !admin?
+        redirect to '/'
+      end
+      
       Program.find(params[:id]).delete
       redirect to '/programs'
     end 
-  
-  
+
   end 
