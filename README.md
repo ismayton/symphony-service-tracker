@@ -11,7 +11,7 @@ Otherwise, use the provided forms to create musicians, sections, and programs.
 
 ## Usage
 
-Use the signup feature to create an account to view musician, section, and program pages. Enter an admin key (default is "admin") to display 'edit' and 'delete' options on each /show page and unlock access to /new routes.
+Use the signup feature to create an account to view musician, section, and program pages. Enter an admin key during signup (default is "admin") to enable 'edit' and 'delete' options on each /show page and unlock access to /new routes.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
